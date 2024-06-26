@@ -1,76 +1,30 @@
 import React from "react";
-import {View, StyleSheet, Text, } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import ThemeToggleButton from '../theme/ThemeToggleButton';
-import {useTheme} from "../theme/ThemeContext";
-import {DarkTheme as theme} from "@react-navigation/native/src";
-
+import { useTheme } from "../theme/ThemeContext";
 
 export default function SettingsScreen() {
     const { theme } = useTheme();
+
     return (
         <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
             <View style={styles.content}>
                 <View>
-                    <Text style={styles.header}>Settings</Text>
+                    <Text style={[styles.header, { color: theme.colors.text }]}>Settings</Text>
                 </View>
-                <View style={styles.optionContainer}>
-                    <View style={styles.subOptionContainer}>
-                        <Text style={{
-                            fontSize: 18,
-                            color: theme.colors.text
-                        }}>Language</Text>
-                        <Ionicons name="chevron-forward-outline" size={24} style={styles.tuneIcon} />
+                {['Language', 'My Profile', 'Contact Us', 'Change Password', 'Privacy Policy'].map((option, index) => (
+                    <View key={index} style={styles.optionContainer}>
+                        <View style={styles.subOptionContainer}>
+                            <Text style={[styles.optionText, { color: theme.colors.text }]}>{option}</Text>
+                            <Ionicons name="chevron-forward-outline" size={24} color={theme.colors.text} />
+                        </View>
+                        <View style={styles.line} />
                     </View>
-                    <View style={styles.line} />
-                </View>
-                <View style={styles.optionContainer}>
-                    <View style={styles.subOptionContainer}>
-                        <Text style={{
-                            fontSize: 18,
-                            color: theme.colors.text
-                        }}>My Profile</Text>
-                        <Ionicons name="chevron-forward-outline" size={24} style={styles.tuneIcon} />
-                    </View>
-                    <View style={styles.line} />
-                </View>
-                <View style={styles.optionContainer}>
-                    <View style={styles.subOptionContainer}>
-                        <Text style={{
-                            fontSize: 18,
-                            color: theme.colors.text
-                        }}>Contact Us</Text>
-                        <Ionicons name="chevron-forward-outline" size={24} style={styles.tuneIcon} />
-                    </View>
-                    <View style={styles.line} />
-                </View>
-                <View style={styles.optionContainer}>
-                    <View style={styles.subOptionContainer}>
-                        <Text style={{
-                            fontSize: 18,
-                            color: theme.colors.text
-                        }}>Change Password</Text>
-                        <Ionicons name="chevron-forward-outline" size={24} style={styles.tuneIcon} />
-                    </View>
-                    <View style={styles.line} />
-                </View>
-                <View style={styles.optionContainer}>
-                    <View style={styles.subOptionContainer}>
-                        <Text style={{
-                            fontSize: 18,
-                            color: theme.colors.text
-                        }}>Privacy Policy</Text>
-                        <Ionicons name="chevron-forward-outline" size={24} style={styles.tuneIcon} />
-                    </View>
-                    <View style={styles.line} />
-                </View>
+                ))}
             </View>
             <View style={styles.bottom}>
-                <Text style={{
-                    fontSize: 22,
-                    fontWeight: '500',
-                    color: theme.colors.text
-                }}>Theme</Text>
+                <Text style={[styles.themeText, { color: theme.colors.text }]}>Theme</Text>
                 <ThemeToggleButton />
             </View>
         </View>
@@ -81,22 +35,20 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: '#FFFFFF',
     },
     header: {
         fontSize: 24,
         fontWeight: '500',
-        color: theme.colors.text,
         padding: 10,
         marginBottom: 10,
         alignItems: 'center',
+        textAlign: 'center',
         justifyContent: 'center',
     },
     content: {
-        top: 60,
+        top: 75,
         flex: 1,
         flexDirection: 'column',
-        justifyContent:'left',
     },
     optionContainer: {
         padding: 10,
@@ -104,31 +56,33 @@ const styles = StyleSheet.create({
     },
     subOptionContainer: {
         flexDirection: 'row',
-        justifyContent:'space-between',
-        alignItems: 'left',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         padding: 4,
         marginBottom: 8,
     },
+    optionText: {
+        fontSize: 18,
+    },
     line: {
-        width: 365,
+        width: '100%',
         height: 0.35,
         borderWidth: 0.5,
         borderColor: '#AFB0B6FF',
     },
-    Arrow1: {
+    tuneIcon: {
         color: '#000000',
     },
-    tuneIcon: {
-        color: theme.colors.text
-    },
     bottom: {
-        flex: 1,
-        top: 30,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: 10,
         marginHorizontal: 30,
+        bottom: 40,
     },
-
+    themeText: {
+        fontSize: 22,
+        fontWeight: '500',
+    },
 });

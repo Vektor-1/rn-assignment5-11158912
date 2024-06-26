@@ -12,7 +12,7 @@ const ThemeToggleButton = () => {
                 {isDarkTheme ? '' : ''}
             </Text>
             <Switch
-                trackColor={{ false: '#767577', true: '#b3aeae' }}
+                trackColor={{ false: '#767577', true: '#11e811' }}
                 thumbColor={isDarkTheme ? '#ffffff' : '#f4f3f4'}
                 ios_backgroundColor="#3e3e3e"
                 onValueChange={toggleTheme}
