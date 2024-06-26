@@ -2,7 +2,9 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from '../theme/ThemeContext';
-import { MaterialCommunityIcons as Icon } from '@expo/vector-icons';
+import { Foundation, MaterialCommunityIcons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../pages/Home';
 import SettingsScreen from '../pages/Settings';
 import Cards from '../pages/Card';
@@ -18,22 +20,27 @@ function BottomNavBar() {
             <Tab.Navigator
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
-                        let iconName;
+                        let iconComponent;
                         if (route.name === 'Home') {
-                            iconName = focused ? 'home' : 'home-outline';
+                            iconComponent = focused ? <MaterialCommunityIcons name="home" size={24} color={color} /> : <MaterialCommunityIcons name="home-outline" size={24} color={color} />;
                         } else if (route.name === 'Cards') {
-                            iconName = focused ? 'wallet' : 'wallet-outline';
+                            iconComponent = focused ? <FontAwesome5 name="wallet" size={24} color={color} /> : <FontAwesome5 name="wallet" size={24} color={color} />;
                         } else if (route.name === 'Statistics') {
-                            iconName = focused ? 'chart-pie' : 'chart-pie-outline';
+                            iconComponent = focused ? <Foundation name="graph-pie" size={size} color={color} /> : <Foundation name="graph-pie" size={size} color={color} />;
                         } else if (route.name === 'Settings') {
-                            iconName = focused ? 'cog' : 'cog-outline';
+                            iconComponent = focused ? <Ionicons name="settings" size={size} color={color} /> : <Ionicons name="settings-outline" size={size} color={color} />;
                         }
-                        return <Icon name={iconName} size={size} color={color} />;
+                        return iconComponent;
                     },
-                    tabBarActiveTintColor: theme.colors.primary,
-                    tabBarInactiveTintColor: theme.colors.border,
+                    tabBarActiveTintColor: 'blue',
+                    tabBarInactiveTintColor: theme.colors.primary,
                     tabBarLabelStyle: {
                         color: theme.colors.text,
+                    },
+                    tabBarStyle: {
+                        height: 70,
+                        paddingBottom: 10,
+                        backgroundColor: theme.colors.navBar,
                     },
                     headerShown: false,
                 })}

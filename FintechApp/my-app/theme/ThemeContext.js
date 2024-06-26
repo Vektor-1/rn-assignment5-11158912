@@ -12,6 +12,9 @@ const lightTheme = {
         text: '#000',
         border: '#ccc',
         notification: '#f50057',
+        iconBackground: '#f3f1ef',
+        icon: 'blue',
+        navBar: '#f3f1ef',
     },
 };
 
@@ -19,11 +22,14 @@ const darkTheme = {
     dark: true,
     colors: {
         primary: '#fff',
-        background: '#272323',
+        background: '#15161E',
         card: '#000',
         text: '#fff',
-        border: '#222',
+        border: '#5C5D68',
         notification: '#ff4081',
+        iconBackground: '#393434',
+        icon: 'blue',
+        navBar: '#222332'
     },
 };
 

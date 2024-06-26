@@ -1,40 +1,39 @@
 import React from 'react';
-import {FlatList, StyleSheet, Text, View, Image} from 'react-native';
+import { FlatList, StyleSheet, Text, View, Image } from 'react-native';
 
 const Apple = require('../Images/Apple.png');
 const Spotify = require('../Images/Spotify.png');
 const Transfer = require('../Images/Money.png');
 const Cart = require('../Images/Grocery.png');
 
-
 const data = [
     {
         id: '1',
         image: Apple,
-        title: 'Jr Executive',
-        subtitle: 'Burger King',
-        salary: '$96,000/y',
+        title: 'Apple Store',
+        subtitle: 'Entertainment',
+        cost: '-$5.99',
     },
     {
         id: '2',
         image: Spotify,
-        title: 'Product Manager',
-        subtitle: 'Beats',
-        salary: '$84,000/y',
+        title: 'Spotify',
+        subtitle: 'Music',
+        cost: '-$12.99',
     },
     {
         id: '3',
         image: Transfer,
-        title: 'Product Manager',
+        title: 'Transaction',
         subtitle: 'Facebook',
-        salary: '$86,000/y',
+        cost: '$300',
     },
     {
         id: '4',
         image: Cart,
-        title: 'OpenAI',
-        subtitle: 'Marketing Director',
-        salary: '$105,900/y',
+        title: 'Grocery',
+        subtitle: 'Food',
+        cost: '-$88',
     },
 ];
 
@@ -43,14 +42,16 @@ const ColumnCard = ({ item }) => {
         <View style={styles.card}>
             <View style={styles.cardContent}>
                 <View style={styles.topContainer}>
-                    <Image source={item.image} style={styles.image} />
-                    <View>
+                    <View style={styles.imageContainer}>
+                        <Image source={item.image} style={styles.image} />
+                    </View>
+                    <View style={styles.textContainer}>
                         <Text style={styles.title}>{item.title}</Text>
                         <Text style={styles.subtitle}>{item.subtitle}</Text>
                     </View>
                 </View>
                 <View style={styles.bottomContainer}>
-                    <Text style={styles.salary}>{item.salary}</Text>
+                    <Text style={styles.cost}>{item.cost}</Text>
                 </View>
             </View>
         </View>
@@ -75,58 +76,54 @@ const styles = StyleSheet.create({
         padding: 6,
     },
     card: {
-        backgroundColor: '#fff',
-        borderRadius: 20,
-        elevation: 2,
-        height: 86,
-        width: '98%',
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
+        backgroundColor: '#f5f5f5',
+        borderRadius: 24,
         marginVertical: 8,
-        marginHorizontal: 8,
+        marginHorizontal: 10,
         padding: 10,
+        height: 90,
     },
     topContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: 10,
+    },
+    imageContainer: {
+        height: 40,
+        width: 40,
+        borderRadius: 20,
+        overflow: 'hidden',
+        marginRight: 16,
     },
     image: {
-        width: 40,
-        height: 40,
-        borderRadius: 8,
-        marginRight: 16,
-        marginTop: 10,
+        width: '100%',
+        height: '100%',
+        resizeMode: 'contain',
+    },
+    textContainer: {
+        flex: 1,
     },
     title: {
-        top: 1,
         fontSize: 16,
         fontWeight: 'bold',
     },
     subtitle: {
         fontSize: 14,
-        top: 12,
         color: '#666',
     },
     bottomContainer: {
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-        marginTop: 4,
-        paddingVertical: 0,
-        marginRight: 10,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        marginTop: 10,
     },
-    salary: {
+    cost: {
         fontSize: 16,
         fontWeight: 'bold',
     },
     cardContent: {
-        justifyContent: 'space-between',
         flexDirection: 'row',
+        justifyContent: 'space-between',
     },
-
 });
 
 export default CardList;

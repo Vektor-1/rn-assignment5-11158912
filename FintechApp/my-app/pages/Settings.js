@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     content: {
-        top: 75,
+        top: 45,
         flex: 1,
         flexDirection: 'column',
     },
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 10,
         marginHorizontal: 30,
-        bottom: 40,
+        bottom: 60,
     },
     themeText: {
         fontSize: 22,
