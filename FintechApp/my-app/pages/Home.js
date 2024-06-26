@@ -203,6 +203,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 10,
+        marginHorizontal: 10,
     },
     sectionTitle: {
         fontSize: 22,
@@ -230,8 +231,9 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     transactionAmount: {
-        fontSize: 16,
+        fontSize: 20,
         fontWeight: 'bold',
+        paddingBottom: 9,
     },
     transactionTextContainer: {
         flexDirection: 'column',
@@ -239,11 +241,11 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     transactionText: {
-        fontSize: 24,
+        fontSize: 19,
         fontWeight: 500,
     },
     transactionSubText: {
-        fontSize: 16,
+        fontSize: 14,
         color: 'gray',
     },
     VisaCard: {
